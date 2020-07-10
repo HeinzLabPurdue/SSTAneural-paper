@@ -39,14 +39,26 @@ if length(anl.kin_trajectory.f0)~=sum(anl.tPlot<188e-3)
 end
 
 % Load saved data
-DirStruct.INdata= '/media/parida/DATAPART1/Matlab/DropboxOutput/SynchronyCapture/ParsedData/';
-DirStruct.OUTdata= '/media/parida/DATAPART1/Matlab/DropboxOutput/SynchronyCapture/F0Harmonics/Synthetic/';
+% DirStruct.INdata= '/media/parida/DATAPART1/Matlab/DropboxOutput/SynchronyCapture/ParsedData/';
+% DirStruct.OUTdata= '/media/parida/DATAPART1/Matlab/DropboxOutput/SynchronyCapture/F0Harmonics/Synthetic/';
+% ChinID= 374;
+% SynCapData= load(sprintf('%sQ%d_allSyncCap.mat', DirStruct.INdata, ChinID));
+% SynCapData=SynCapData.SynCapData;
+% if ~isfolder(DirStruct.OUTdata)
+%     mkdir(DirStruct.OUTdata);
+% end
+
+%updated fix
+DirStruct.INdata= ['data' filesep];
+% DirStruct.OUTdata= '/media/parida/DATAPART1/Matlab/DropboxOutput/SynchronyCapture/F0Harmonics/Synthetic/';
 ChinID= 374;
 SynCapData= load(sprintf('%sQ%d_allSyncCap.mat', DirStruct.INdata, ChinID));
 SynCapData=SynCapData.SynCapData;
-if ~isfolder(DirStruct.OUTdata)
-    mkdir(DirStruct.OUTdata);
-end
+% if ~isfolder(DirStruct.OUTdata)
+%     mkdir(DirStruct.OUTdata);
+% end
+
+
 
 allUnit_vowelPSDcell= cell(length(SynCapData), 1);
 

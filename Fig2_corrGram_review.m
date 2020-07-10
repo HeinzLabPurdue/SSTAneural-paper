@@ -16,7 +16,7 @@ figure(figHan);
 clf;
 set(gcf,figure_prop_name, figure_prop_val);
 
-codesDir= '/home/parida/Dropbox/Articles/neural_temporal_coding/files_to_share/';
+codesDir= pwd;
 addpath(codesDir);
 
 dataDir= ['data' filesep 'SK-2007_12_11-AN_normal' filesep];
