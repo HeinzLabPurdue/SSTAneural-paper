@@ -1,10 +1,13 @@
-clear;
-close all;
-clc;
+% function Fig9_create_natural_vowel_spectra(saveFig)
+function Fig9_create_natural_vowel_spectra(saveFig)
+
+if ~exist('saveFig', 'var')
+    saveFig= 0;
+end
 
 dirStruct.loading_dir= ['data' filesep 'DanishData' filesep];
 dirStruct.Root_savingDir='/media/parida/DATAPART1/Matlab/DropboxOutput/LF_speech_analysis/Output/Danish/';
-dirStruct.latexDir= '/home/parida/Dropbox/Articles/neural_temporal_coding/figures/';
+dirStruct.latexDir= ['figures' filesep];
 
 % chinID=361;
 
@@ -20,7 +23,6 @@ for chinVar=1:length(allfiles)
     allChinSpikeData = [allChinSpikeData; temp.spike_data']; %#ok<AGROW>
 end
 
-saveFigs=0;
 doPlot= 1;
 
 chin_track_unit_spl= unique([ [allChinSpikeData.chinID]', [allChinSpikeData.track]', [allChinSpikeData.unit]', [allChinSpikeData.SPL]'], 'rows');
@@ -40,6 +42,6 @@ for unitVar= 144 % Example = 144th unit [Q355, track#5, unit#8]
     
     fName=sprintf('%sLF_clean_speech_Q%d_t%d_u%d_tStart%.0fms_tEnd%.0fms_%.0fdBSPL', timeSubDir, curChinID, curTrack, curUnit, tStart*1e3, tEnd*1e3, dB_SPL);
     if ~exist(fName, 'file')
-        cur_meanrate= helper.LF_speech_analysis_danish(curChinID, curTrack, curUnit, dB_SPL, tStart, tEnd, fName, saveFigs, dirStruct, doPlot);
+        helper.LF_speech_analysis_danish(curChinID, curTrack, curUnit, dB_SPL, tStart, tEnd, fName, saveFig, dirStruct, doPlot);
     end
 end

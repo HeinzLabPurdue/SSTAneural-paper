@@ -1,11 +1,12 @@
-% create figure with the following setting:
+% function Fig6_7_RD_FM_example(saveFig)
+function Fig6_7_RD_FM_example(saveFig)
 
-% Plot examples of Polarity_Tolerant to Polarity_Sensitive
-clear;
-clc;
+if ~exist('saveFig', 'var')
+    saveFig= 0;
+end
+latexDir= ['figures' filesep];
 
 modFreq= 20; %[10 25 50 100];
-saveFigs= 0;
 
 FigHan.ENV= 1;
 FigHan.TFS= 2;
@@ -58,19 +59,11 @@ if useSpikes
     end
 end
 
-if useFracPower
-    pan4ylabel= 'FracPow';
-else
-    pan4ylabel= 'SynIndex';
-end
 
 all_CF_Hz= logspace(log10(250), log10(8e3), 24); %[250 500 750 1.25e3 2.5e3 4e3 8e3];
 example_CFs= [1e3 1.7e3 4e3];
 ex_ind= dsearchn(all_CF_Hz(:), example_CFs(:));
 all_CF_Hz(ex_ind)= example_CFs;
-
-nSProws= 3;
-nSPcols= length(all_CF_Hz);
 
 fsPlot= 40e3;
 
@@ -107,7 +100,7 @@ parfor freqVar= 1:length(all_CF_Hz)
     curCF_Hz= all_CF_Hz(freqVar);
     
     
-    [curSAM_pos, t]= helper.create_SAM(curCF_Hz, StimParams.fm, StimParams.fs, StimParams.modDepth, StimParams.dur, [], StimParams.phi_m);
+    [curSAM_pos, ~]= helper.create_SAM(curCF_Hz, StimParams.fm, StimParams.fs, StimParams.modDepth, StimParams.dur, [], StimParams.phi_m);
     
     %     thresh_dBSPL= get_thresh_curCF(curSAM_pos(1:round(StimParams.rlf_dur*StimParams.fs)), curCF_Hz, ANparams);
     %     curSAM_pos= gen_rescale(curSAM_pos, thresh_dBSPL + StimParams.dBreThresh);
@@ -124,7 +117,7 @@ parfor freqVar= 1:length(all_CF_Hz)
     tEnd= StimParams.dur;
     
     vihc_pos = ANModelBEZ2018.model_IHC_BEZ2018(curSAM_pos(:)' , curCF_Hz, nrep, ANparams.dt, 1.1*StimParams.dur, ANparams.cohc, ANparams.cihc,ANparams.species);
-    [curSpikeTrainsPos, ~, ~, SynOut_pos, ~, ~] = ANModelBEZ2018.model_Synapse_BEZ2018_trials(...
+    [curSpikeTrainsPos, ~, ~, ~, ~, ~] = ANModelBEZ2018.model_Synapse_BEZ2018_trials(...
         vihc_pos, curCF_Hz, nrep, ANparams.dt, ANparams.noiseType, ANparams.implnt, ANparams.spont, ANparams.tabs, ANparams.trel);
     curSpikeTrainsPos= reshape(curSpikeTrainsPos, numel(curSpikeTrainsPos)/nrep, nrep);
     curSpikeTrainsPos= num2cell(curSpikeTrainsPos, 1);   
@@ -132,7 +125,7 @@ parfor freqVar= 1:length(all_CF_Hz)
     curSpikeTrainsPos= cellfun(@(x,t1,t2) x(x>t1 & x<t2), curSpikeTrainsPos, repmat({tStart}, size(curSpikeTrainsPos)), repmat({tEnd}, size(curSpikeTrainsPos)), 'UniformOutput', false);
     
     vihc_neg = ANModelBEZ2018.model_IHC_BEZ2018(curSAM_neg(:)' , curCF_Hz, nrep, ANparams.dt, 1.1*StimParams.dur, ANparams.cohc, ANparams.cihc,ANparams.species);
-    [curSpikeTrainsNeg, ~, ~, SynOut_neg, ~, ~] = ANModelBEZ2018.model_Synapse_BEZ2018_trials(...
+    [curSpikeTrainsNeg, ~, ~, ~, ~, ~] = ANModelBEZ2018.model_Synapse_BEZ2018_trials(...
         vihc_neg, curCF_Hz, nrep, ANparams.dt, ANparams.noiseType, ANparams.implnt, ANparams.spont, ANparams.tabs, ANparams.trel);
     curSpikeTrainsNeg= reshape(curSpikeTrainsNeg, numel(curSpikeTrainsNeg)/nrep, nrep);
     curSpikeTrainsNeg= num2cell(curSpikeTrainsNeg, 1);
@@ -144,7 +137,7 @@ parfor freqVar= 1:length(all_CF_Hz)
     [NSACpos,~,~,~] = helper.SACfull_m(curSpikeTrainsPos, 1/fsPlot, StimParams.dur);
     [NSACneg,~,~,~] = helper.SACfull_m(curSpikeTrainsNeg, 1/fsPlot, StimParams.dur);
     NSAC= helper.trifilt((NSACpos + NSACneg)/2, anl.trifiltWidth);
-    [NSCC, delay,AVGrates,TOTALspikes] = helper.SCCfull_m({curSpikeTrainsPos, curSpikeTrainsNeg}, 1/fsPlot, StimParams.dur);
+    [NSCC, ~,AVGrates,~] = helper.SCCfull_m({curSpikeTrainsPos, curSpikeTrainsNeg}, 1/fsPlot, StimParams.dur);
     NSCC= (NSCC + fliplr(NSCC))/2;
     NSCC= helper.trifilt(NSCC, anl.trifiltWidth);
     SUMCORraw= (NSAC + NSCC)/2;
@@ -169,7 +162,7 @@ parfor freqVar= 1:length(all_CF_Hz)
     
     %%
     binEdges= 0:1/fsPlot:StimParams.dur;
-    binCenters= (binEdges(1:end-1) + binEdges(2:end)) / 2;
+
     uRatePos= histcounts(cell2mat(curSpikeTrainsPos'), binEdges);
     uRateNeg= histcounts(cell2mat(curSpikeTrainsNeg'), binEdges);
     uRateAvg= (uRatePos + uRateNeg) / 2;
@@ -363,7 +356,7 @@ set(gca, 'YColor', helper.get_color('k'), 'ytick', plt.VSytick);
 ylim([-.01 1.01]);
 env_ttl_txt_Han(4)= text(0.01, 1.1, '\bfD\rm', 'Units', 'normalized');
 
-[lgHan, icons]= legend(lHanVS, 'VS_p_p', 'box', 'off', 'Location', 'southwest');
+[~, icons]= legend(lHanVS, 'VS_p_p', 'box', 'off', 'Location', 'southwest');
 icons(2).XData= mean(icons(2).XData) + [-.1 +.25];
 
 env_sp_ax(5)= subplot(413);
@@ -486,8 +479,8 @@ set(env_sp_ax(3),'Position',[Xcorner_X+2*Xwidth_ABC+2*Xshift_ABC Ycorner_X+3*Ywi
 drawnow
 
 
-if saveFigs && (useSpikes)
-    saveas(gcf, '/home/parida/Dropbox/Articles/neural_temporal_coding/figures/Fig6', 'epsc');
+if saveFig && (useSpikes)
+    saveas(gcf, [latexDir 'Fig6'], 'epsc');
 end
 
 %% TFS
@@ -540,7 +533,7 @@ else
     ylim([mrkYval2-40 mrkYval2+2]);
 end
 
-[lgHan, icons]= legend('D(f)', '\Phi(f)', 'box', 'off', 'Location', 'northeast');
+[~, icons]= legend('D(f)', '\Phi(f)', 'box', 'off', 'Location', 'northeast');
 icons(3).XData= mean(icons(3).XData) + [-.1 +.3];
 icons(4).XData= icons(4).XData + .125;
 icons(5).XData= mean(icons(5).XData) + [-.1 +.3];
@@ -610,6 +603,6 @@ set(tfs_sp_ax(3),'Position',[Xcorner_X+2*Xwidth_ABC+2*Xshift_ABC Ycorner_X+2*Ywi
 drawnow
 
 
-if saveFigs && (useSpikes)
-    saveas(gcf, '/home/parida/Dropbox/Articles/neural_temporal_coding/figures/Fig7', 'epsc');
+if saveFig && (useSpikes)
+    saveas(gcf, [latexDir 'Fig7'], 'epsc');
 end

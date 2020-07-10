@@ -1,11 +1,12 @@
-% ARO: For 1.3 sec,  set AROadhoc = 1
-% ARO: For 380-480 ms,  set AROadhoc = 0
+% function Fig4_compare_efficiency_difcor_c_t()
+function Fig4_compare_efficiency_difcor_c_t(saveFig)
 
-clear;
-% close all;
-clc;
+if ~exist('saveFig', 'var')
+    saveFig= 0;
+end
+dirStruct.latexDir= ['figures' filesep];
+dirStruct.loading_dir= ['data' filesep 'DanishData' filesep];
 
-saveFig= 0;
 
 figSize_cm= [15 5 13.2 8];
 figure_prop_name = {'PaperPositionMode','units','Position', 'Renderer'};
@@ -20,8 +21,6 @@ sig= helper.gen_resample(sig, fsOrg, fsSig);
 sig= helper.gen_rescale(sig, 65);
 
 
-dirStruct.loading_dir= ['data' filesep 'DanishData' filesep];
-dirStruct.latexDir= '/home/parida/Dropbox/Articles/neural_temporal_coding/figures/';
 
 nh_hinIDs=[321 322 325 338 341 343 346 347 354 355 373 379];
 

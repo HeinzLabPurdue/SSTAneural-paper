@@ -1,7 +1,10 @@
-clear;
-clc;
+% function FigS1test_nlIHCfun_PSD(saveFig)
+function FigS1test_nlIHCfun_PSD(saveFig)
 
-saveFig= 1;
+if ~exist('saveFig', 'var')
+    saveFig= 0;
+end
+latexDir= ['figures' filesep];
 
 figSize_cm= [15 5 13.2 8];
 figure_prop_name = {'PaperPositionMode','units','Position', 'Renderer'};
@@ -17,11 +20,11 @@ fs= 20e3;
 fc= 1e3;
 fm= 100;
 modDepth= 1;
-dur= 1; 
+dur= 1;
 
 [x_sam, t]= helper.create_SAM(fc, fm, fs, modDepth, dur);
 t= t*1e3;
-x_ihc= 2*max(x_sam)*(normcdf(3*x_sam/max(x_sam))-.5); 
+x_ihc= 2*max(x_sam)*(normcdf(3*x_sam/max(x_sam))-.5);
 lp_nh= helper.get_filter_designfilt('lp', 2e3, fs, 4);
 x_ihc= filtfilt(lp_nh, x_ihc);
 
@@ -69,10 +72,10 @@ ylabel('');
 set(gca, 'XTick', plt.xtick_psd_val, 'XTickLabel', plt.xtick_psd_lab);
 
 
-linkaxes(ax([1 3])); 
+linkaxes(ax([1 3]));
 xlim(ax(1), [0 2.2/fm]*1e3);
 ylim(ax(1), [-2.4 2.4]);
-linkaxes(ax([2 4])); 
+linkaxes(ax([2 4]));
 xlim(ax(2), [fm/2 3.5*fc]);
 ylim(ax(2), [-60 0]);
 set(findall(gcf,'-property','FontSize'),'FontSize', 9);
@@ -115,7 +118,6 @@ drawnow
 set(ax(3),'Position',[Xcorner_CD Ycorner_CD+Ywidth_CD+Yshift_CD Xwidth_CD Ywidth_CD])
 drawnow
 
-latexDir= '/home/parida/Dropbox/Articles/neural_temporal_coding/figures/';
 if saveFig
-   saveas(gcf, [latexDir 'FigS1'], 'epsc'); 
+    saveas(gcf, [latexDir 'FigS1'], 'epsc');
 end

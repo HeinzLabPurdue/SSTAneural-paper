@@ -1,10 +1,13 @@
-clear;
-clc;
-saveFig= 0;
+% function Fig13_Danish_vowel_AN_HGram(saveFig)
+function Fig13_Danish_vowel_AN_HGram(saveFig)
+
+if ~exist('saveFig', 'var')
+    saveFig= 0;
+end
 
 % Load saved data
 DirStruct.INdata= ['data' filesep];
-DirStruct.latex= '/home/parida/Dropbox/Articles/neural_temporal_coding/figures/';
+DirStruct.latex= ['figures' filesep];
 
 % Init params
 figHan.time= 1;
@@ -350,7 +353,7 @@ drawnow
 
 if saveFig
     fName_latex= [DirStruct.latex 'Fig13'];
-    fName_latex_tiff= [DirStruct.latex 'tiff/Fig13'];
+%     fName_latex_tiff= [DirStruct.latex 'tiff/Fig13'];
     print(fName_latex, '-dpng',  '-r600');
-    print(fName_latex_tiff, '-dtiff',  '-r600');
+%     print(fName_latex_tiff, '-dtiff',  '-r600');
 end

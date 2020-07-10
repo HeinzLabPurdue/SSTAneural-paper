@@ -1,7 +1,11 @@
-clear;
-clc;
+% function FigS2_create_kinVowel_spectrum(saveFig)
+function FigS2_create_kinVowel_spectrum(saveFig)
 
-saveFig= 0;
+if ~exist('saveFig', 'var')
+    saveFig= 0;
+end
+latexDir= ['figures' filesep];
+
 plt.xtick_psd_val= [10 100 1e3 5e3];
 plt.xtick_psd_lab= cellfun(@(x) num2str(x), num2cell(plt.xtick_psd_val/1e3), 'uniformoutput', false);
 plt.fSize= 9;
@@ -44,7 +48,6 @@ set(findall(gcf,'-property','TickLength'),'TickLength', plt.tick_len, 'units', '
 
 set(gca, 'Units', 'normalized', 'Position', [.08 .14 .9 .8]);
 
-latexDir= '/home/parida/Dropbox/Articles/neural_temporal_coding/figures/';
 if saveFig
    saveas(gcf, [latexDir 'FigS2'], 'epsc'); 
 end

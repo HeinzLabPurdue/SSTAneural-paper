@@ -1,4 +1,4 @@
-function create_intrinsic_envelopes(curSpikes_pos, curSpikes_neg, anl, filt_obj_LP, filt_abj_BP, fName)
+function create_intrinsic_envelopes(curSpikes_pos, curSpikes_neg, anl, filt_obj_LP, filt_abj_BP, fName, dirStruct, saveFig)
 
 [sigEng, fsEng_Org]= audioread(['stimuli' filesep 'Stim_S_P.wav']);
 
@@ -97,6 +97,6 @@ drawnow
 set(sp_ax(2),'Position',[Xcorner+Xwidth+Xshift Ycorner Xwidth Ywidth])
 drawnow
 
-if contains(fName, 'HilbEnv_clean_speech_Q277_t2_u1_61dBSPL')
-    saveas(gcf, '/home/parida/Dropbox/Articles/neural_temporal_coding/figures/Fig5', 'epsc');
+if saveFig && contains(fName, 'HilbEnv_clean_speech_Q277_t2_u1_61dBSPL')
+    saveas(gcf, [dirStruct.latexDir 'Fig5'], 'epsc');
 end

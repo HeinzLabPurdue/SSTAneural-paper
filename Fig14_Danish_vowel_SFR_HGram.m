@@ -1,11 +1,12 @@
-clear;
-clc;
-clf;
+% function Fig14_Danish_vowel_SFR_HGram(saveFig)
+function Fig14_Danish_vowel_SFR_HGram(saveFig)
 
-saveFig= 0;
+if ~exist('saveFig', 'var')
+    saveFig= 0;
+end
+LatexDir= ['figures' filesep];
 
 file2load= ['data' filesep 'SP-2019_06_09-Q374_SFR_NH' filesep 'a0008_FFR_SNRenvSSN_Stim_S_P_atn10.mat'];
-LatexDir= '/home/parida/Dropbox/Articles/neural_temporal_coding/figures/';
 
 hilbPhi1_comp0= 0;
 

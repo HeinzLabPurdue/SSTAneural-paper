@@ -1,4 +1,3 @@
-% clear;
 function PSDout= LF_speech_analysis_danish(curChinID, curTrack, curUnit, dB_SPL, tStart3, tEnd3, fName, saveFigs, dirStruct, doPlot)
 
 loading_Dir= dirStruct.loading_dir;

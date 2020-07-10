@@ -1,7 +1,11 @@
-clear;
-clc;
+% function Fig12_synth_vowel_AN_HGram(saveFig)
+function Fig12_synth_vowel_AN_HGram(saveFig)
 
-saveFig= 0;
+if ~exist('saveFig', 'var')
+    saveFig= 0;
+end
+latexDir= ['figures' filesep];
+
 
 % Init params
 figHan.time= 1;
@@ -154,8 +158,6 @@ set(sp_ax(2),'Position',[Xcorner+Xwidth+Xshift Ycorner Xwidth Ywidth])
 set(txtHan(2),'pos',get(txtHan(2),'pos')+[0 0.01 0])
 drawnow
 
-%
-latexDir= '/home/parida/Dropbox/Articles/neural_temporal_coding/figures/';
 if saveFig
     saveas(gcf, [latexDir 'Fig12'], 'epsc');
 end

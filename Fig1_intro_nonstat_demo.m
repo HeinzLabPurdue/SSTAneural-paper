@@ -1,8 +1,12 @@
-clear;
-clc;
+% function Fig1_intro_nonstat_demo(saveFig)
+function Fig1_intro_nonstat_demo(saveFig)
+
+if ~exist('saveFig', 'var')
+    saveFig= 0;
+end
+LatexDir= ['figures' filesep];
 
 figHan= 1;
-saveFig= 0;
 
 
 %% Load speech
@@ -305,6 +309,6 @@ set(txt, 'FontSize', 11);
 
 
 if saveFig
-    print('/home/parida/Dropbox/Articles/neural_temporal_coding/figures/Fig1', '-dpng',  '-r600');
-    print('/home/parida/Dropbox/Articles/neural_temporal_coding/figures/tiff/Fig1', '-dtiff',  '-r600');
+    print([LatexDir 'Fig1'], '-dpng',  '-r600');
+    print([LatexDir 'Fig1'], '-dtiff',  '-r600');
 end

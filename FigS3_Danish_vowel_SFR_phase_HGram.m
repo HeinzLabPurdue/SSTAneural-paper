@@ -1,11 +1,13 @@
-clear;
-clc;
-clf;
+% function FigS3_Danish_vowel_SFR_phase_HGram(saveFig)
+function FigS3_Danish_vowel_SFR_phase_HGram(saveFig)
 
-saveFig= 0;
+if ~exist('saveFig', 'var')
+    saveFig= 0;
+end
+LatexDir= ['figures' filesep];
 
 file2load= ['data' filesep 'SP-2019_06_09-Q374_SFR_NH' filesep 'a0008_FFR_SNRenvSSN_Stim_S_P_atn10.mat'];
-LatexDir= '/home/parida/Dropbox/Articles/neural_temporal_coding/figures/';
+
 
 hilbPhi1_comp0= 1;
 
@@ -37,11 +39,6 @@ if hilbPhi1_comp0
 else
     x_TFS= x_tfs;
 end
-t_ffr= (1:length(x_tfs))/anl.fs;
-
-
-x_env= (x_pos+x_neg)/2;
-x_env= helper.gen_resample(x_env, fs_data, anl.fs);
 
 %%
 [sig, fs_sig]= audioread(['stimuli' filesep 'FLN_Stim_S_P.wav']);

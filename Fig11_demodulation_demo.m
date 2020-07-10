@@ -1,7 +1,11 @@
-clear;
-clc;
+% function Fig11_demodulation_demo(saveFig)
+function Fig11_demodulation_demo(saveFig)
 
-saveFig= 0;
+if ~exist('saveFig', 'var')
+    saveFig= 0;
+end
+latexDir= ['figures' filesep];
+
 %% Create a FM
 % define stim params
 stim.fs= 10e3;
@@ -37,11 +41,10 @@ validFreqInds= Freq_yy>-freq_window_Hz & Freq_yy<freq_window_Hz;
 outPower_psd= sum(db2mag(A_yy(validFreqInds)).^2*numel(y)/numel(A_yy));
 totPower_psd= sum(db2mag(A_yy).^2*numel(y)/numel(A_yy));
 
-fprintf('FUN: traj=%.1f, TOT=%.1f \n', outPower_fun, totPower_fun);
-fprintf('PSD: traj=%.1f, TOT=%.1f \n', outPower_psd, totPower_psd);
+fprintf('-----> FUN: traj=%.1f, TOT=%.1f \n', outPower_fun, totPower_fun);
+fprintf('-----> PSD: traj=%.1f, TOT=%.1f \n', outPower_psd, totPower_psd);
 
 %%
-latexDir= '/home/parida/Dropbox/Articles/neural_temporal_coding/figures/';
 anl.tWindow= 100e-3;
 anl.fracOVlap= .99;
 anl.nfft= 2^(3+nextpow2(anl.tWindow*stim.fs));

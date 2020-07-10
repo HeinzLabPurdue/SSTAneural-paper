@@ -1,7 +1,10 @@
-clear;
-clc;
+% function Fig3_compare_AN_FFR(saveFig)
+function Fig3_compare_AN_FFR(saveFig)
 
-saveFig= 0;
+if ~exist('saveFig', 'var')
+    saveFig= 0;
+end
+LatexDir= ['figures' filesep];
 
 figSize_cm= [15 5 13.2 8];
 figure_prop_name = {'PaperPositionMode','units','Position', 'Renderer'};
@@ -16,7 +19,7 @@ ffr.dataDir= ['data' filesep 'SP-2019_06_09-Q374_SFR_pink500Hz_NH' filesep];
 
 ANdataDir= ['data' filesep];
 
-LatexDir= '/home/parida/Dropbox/Articles/neural_temporal_coding/figures/';
+
 
 %% First load FFR data
 ffr.file= dir([ffr.dataDir 'a*SSN_Stim_S_P*']);

@@ -1,7 +1,10 @@
-clear;
-clc;
+% function Fig2_corrGram_review(saveFig)
+function Fig2_corrGram_review(saveFig)
 
-saveFig= 0;
+if ~exist('saveFig', 'var')
+    saveFig= 0;
+end
+LatexDir= ['figures' filesep];
 
 figSize_cm= [15 5 19.05 8.5];
 figure_prop_name = {'PaperPositionMode', 'units', 'Position', 'Renderer'};
@@ -221,6 +224,5 @@ drawnow
 %%
 
 if saveFig
-%     saveas(gcf, '/home/parida/Dropbox/Articles/neural_temporal_coding/figures/corrGram_review', 'epsc');
-    saveas(gcf, '/home/parida/Dropbox/Articles/neural_temporal_coding/figures/Fig2', 'epsc');
+    saveas(gcf, [LatexDir 'Fig2'], 'epsc');
 end

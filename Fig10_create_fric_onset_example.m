@@ -1,7 +1,10 @@
-clear;
-clf;
-clc;
+% function Fig10_create_fric_onset_example(saveFig)
+function Fig10_create_fric_onset_example(saveFig)
 
+if ~exist('saveFig', 'var')
+    saveFig= 0;
+end
+dirStruct.latexDir= ['figures' filesep];
 dirStruct.loading_Dir= ['data' filesep 'DanishData' filesep];
 
 chinID=355;
@@ -18,7 +21,6 @@ for chinVar=1:length(allfiles)
     allChinSpikeData = [allChinSpikeData; temp.spike_data']; %#ok<AGROW>
 end
 
-saveFigs= 0;
 chin_track_unit_spl= unique([ [allChinSpikeData.chinID]', [allChinSpikeData.track]', [allChinSpikeData.unit]', [allChinSpikeData.SPL]'], 'rows');
 tStart = .74; tEnd = .85; % Burst window (/s/)
 
@@ -28,5 +30,5 @@ for unitVar=6
     curUnit= chin_track_unit_spl(unitVar, 3);
     dB_SPL= chin_track_unit_spl(unitVar, 4);
     
-    helper.compare_envs_danish(curChinID, curTrack, curUnit, dB_SPL, tStart, tEnd, saveFigs, dirStruct);
+    helper.compare_envs_danish(curChinID, curTrack, curUnit, dB_SPL, tStart, tEnd, saveFig, dirStruct);
 end

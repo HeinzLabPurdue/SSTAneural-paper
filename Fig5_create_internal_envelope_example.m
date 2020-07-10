@@ -1,6 +1,10 @@
-clear;
-clc;
+% function Fig5_create_internal_envelope_example(saveFig)
+function Fig5_create_internal_envelope_example(saveFig)
 
+if ~exist('saveFig', 'var')
+    saveFig= 0;
+end
+dirStruct.latexDir= ['figures' filesep];
 dirStruct.loading_Dir=['data' filesep 'EnglishData' filesep];
 dirStruct.OutFig_Dir= '/media/parida/DATAPART1/Matlab/DropboxOutput/hilbert_envelopes/English/';
 allfiles=dir([dirStruct.loading_Dir '*.mat']);
@@ -11,7 +15,6 @@ for chinVar=1:length(allfiles)
     allChinSpikeData = [allChinSpikeData; temp.spike_data']; %#ok<AGROW>
 end
 
-saveFigs=1;
 all_chin_track_unit_spl= [ [allChinSpikeData.ChinID]', [allChinSpikeData.track]', [allChinSpikeData.unit]', [allChinSpikeData.SPL]'];
 chin_track_unit_spl= unique(all_chin_track_unit_spl, 'rows');
 tStart3 = 0; tEnd3 = 2.28;
@@ -47,6 +50,6 @@ for unitVar= 16
         curSpikes_neg=cell2mat(curUnitData.SpikeTrains{1,2}');
         
         fName=sprintf('%sHilbEnv_clean_speech_Q%d_t%d_u%d_%.0fdBSPL.png', dirStruct.OutFig_Dir, curChinID, curTrack, curUnit, dB_SPL);
-        helper.create_intrinsic_envelopes(curSpikes_pos, curSpikes_neg, anl, filt_obj_LP, filt_abj_BP, fName);
+        helper.create_intrinsic_envelopes(curSpikes_pos, curSpikes_neg, anl, filt_obj_LP, filt_abj_BP, fName, dirStruct, saveFig);
     end
 end

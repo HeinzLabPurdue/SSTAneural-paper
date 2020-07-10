@@ -1,6 +1,7 @@
 function compare_envs_danish(curChinID, curTrack, curUnit, dB_SPL, tStart, tEnd, saveFigs, dirStruct)
 
 loading_Dir=dirStruct.loading_Dir;
+latexDir= dirStruct.latexDir;
 
 binRes=.5e-3;
 
@@ -155,12 +156,11 @@ if ~isempty(inds2use_stim)
     drawnow
     
     if saveFigs
-        latexDir= '/home/parida/Dropbox/Articles/neural_temporal_coding/figures/';
         if ~exist('latex_fName', 'var')
             latex_fName= sprintf('%senv_comp_Q%d_t%d_u%d_tStart%.0fms_tEnd%.0fms_%.0fdBSPL', latexDir,curChinID, curTrack, curUnit, tStart*1e3, tEnd*1e3, dB_SPL);
         end
         if contains(latex_fName, 'Q355_t2_u4_tStart740ms_tEnd850ms_65dBSPL')
-            fprintf('Saved as %s.eps\n', latex_fName);
+%             fprintf('Saved as %s.eps\n', latex_fName);
             %             saveas(gcf, latex_fName, 'epsc');
             saveas(gcf, [latexDir 'Fig10'], 'epsc');
         end
