@@ -1,10 +1,13 @@
-% function Fig12_synth_vowel_AN_HGram(saveFig)
-function Fig12_synth_vowel_AN_HGram(saveFig)
+% function Fig12_synth_vowel_AN_HGram(saveFig, LatexDir)
+function Fig12_synth_vowel_AN_HGram(saveFig, LatexDir)
 
 if ~exist('saveFig', 'var')
     saveFig= 0;
 end
-latexDir= ['figures' filesep];
+if ~exist('LatexDir', 'var')
+    LatexDir= ['figures' filesep];
+end
+
 
 
 % Init params
@@ -159,5 +162,5 @@ set(txtHan(2),'pos',get(txtHan(2),'pos')+[0 0.01 0])
 drawnow
 
 if saveFig
-    saveas(gcf, [latexDir 'Fig12'], 'epsc');
+    saveas(gcf, [LatexDir 'Fig12'], 'epsc');
 end

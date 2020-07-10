@@ -1,17 +1,16 @@
-% function Fig13_Danish_vowel_AN_HGram(saveFig)
-function Fig13_Danish_vowel_AN_HGram(saveFig)
+% function Fig13_Danish_vowel_AN_HGram(saveFig, LatexDir)
+function Fig13_Danish_vowel_AN_HGram(saveFig, LatexDir)
 
 if ~exist('saveFig', 'var')
     saveFig= 0;
 end
+if ~exist('LatexDir', 'var')
+    LatexDir= ['figures' filesep];
+end
 
 % Load saved data
 DirStruct.INdata= ['data' filesep];
-DirStruct.latex= ['figures' filesep];
-
-% Init params
-figHan.time= 1;
-figHan.psd= 2;
+DirStruct.latex= LatexDir;
 
 anl.stimDuration= 1300e-3; % stim ends at 188 ms
 anl.stimPeriod= 1800e-3; % stim rep rate (stim on + stim off)

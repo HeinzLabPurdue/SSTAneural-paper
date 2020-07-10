@@ -1,10 +1,12 @@
-% function Fig2_corrGram_review(saveFig)
-function Fig2_corrGram_review(saveFig)
+% function Fig2_corrGram_review(saveFig, LatexDir)
+function Fig2_corrGram_review(saveFig, LatexDir)
 
 if ~exist('saveFig', 'var')
     saveFig= 0;
 end
-LatexDir= ['figures' filesep];
+if ~exist('LatexDir', 'var')
+    LatexDir= ['figures' filesep];
+end
 
 figSize_cm= [15 5 19.05 8.5];
 figure_prop_name = {'PaperPositionMode', 'units', 'Position', 'Renderer'};

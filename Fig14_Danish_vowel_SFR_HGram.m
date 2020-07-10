@@ -1,10 +1,12 @@
-% function Fig14_Danish_vowel_SFR_HGram(saveFig)
-function Fig14_Danish_vowel_SFR_HGram(saveFig)
+% function Fig14_Danish_vowel_SFR_HGram(saveFig, LatexDir)
+function Fig14_Danish_vowel_SFR_HGram(saveFig, LatexDir)
 
 if ~exist('saveFig', 'var')
     saveFig= 0;
 end
-LatexDir= ['figures' filesep];
+if ~exist('LatexDir', 'var')
+    LatexDir= ['figures' filesep];
+end
 
 file2load= ['data' filesep 'SP-2019_06_09-Q374_SFR_NH' filesep 'a0008_FFR_SNRenvSSN_Stim_S_P_atn10.mat'];
 

@@ -1,10 +1,14 @@
-% function Fig4_compare_efficiency_difcor_c_t()
-function Fig4_compare_efficiency_difcor_c_t(saveFig)
+% function Fig4_compare_efficiency_difcor_c_t(saveFig, LatexDir)
+function Fig4_compare_efficiency_difcor_c_t(saveFig, LatexDir)
 
 if ~exist('saveFig', 'var')
     saveFig= 0;
 end
-dirStruct.latexDir= ['figures' filesep];
+if ~exist('LatexDir', 'var')
+    LatexDir= ['figures' filesep];
+end
+
+dirStruct.latexDir= LatexDir;
 dirStruct.loading_dir= ['data' filesep 'DanishData' filesep];
 
 

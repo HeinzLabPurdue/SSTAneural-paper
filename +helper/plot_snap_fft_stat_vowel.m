@@ -78,7 +78,7 @@ if doPlot
     box off;
     xlabel('Time (s)');
     xlim([max(.7*tStart, tStart-.02) .01+min([1.4*tEnd, tEnd+.04, tStim(end)+.03])]);
-    ylim([-6 4.5])
+    ylim([-7 4.5])
     txtHan(1)= text(.05, 1.05, 'A. Stimulus & Response', 'interpreter', 'tex', 'units', 'normalized');
     
     %%

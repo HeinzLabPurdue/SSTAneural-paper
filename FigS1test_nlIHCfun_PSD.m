@@ -1,10 +1,12 @@
-% function FigS1test_nlIHCfun_PSD(saveFig)
-function FigS1test_nlIHCfun_PSD(saveFig)
+% function FigS1test_nlIHCfun_PSD(saveFig, LatexDir)
+function FigS1test_nlIHCfun_PSD(saveFig, LatexDir)
 
 if ~exist('saveFig', 'var')
     saveFig= 0;
 end
-latexDir= ['figures' filesep];
+if ~exist('LatexDir', 'var')
+    LatexDir= ['figures' filesep];
+end
 
 figSize_cm= [15 5 13.2 8];
 figure_prop_name = {'PaperPositionMode','units','Position', 'Renderer'};
@@ -119,5 +121,5 @@ set(ax(3),'Position',[Xcorner_CD Ycorner_CD+Ywidth_CD+Yshift_CD Xwidth_CD Ywidth
 drawnow
 
 if saveFig
-    saveas(gcf, [latexDir 'FigS1'], 'epsc');
+    saveas(gcf, [LatexDir 'FigS1'], 'epsc');
 end

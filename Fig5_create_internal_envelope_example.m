@@ -1,10 +1,13 @@
-% function Fig5_create_internal_envelope_example(saveFig)
-function Fig5_create_internal_envelope_example(saveFig)
+% function Fig5_create_internal_envelope_example(saveFig, LatexDir)
+function Fig5_create_internal_envelope_example(saveFig, LatexDir)
 
 if ~exist('saveFig', 'var')
     saveFig= 0;
 end
-dirStruct.latexDir= ['figures' filesep];
+if ~exist('LatexDir', 'var')
+    LatexDir= ['figures' filesep];
+end
+dirStruct.latexDir= LatexDir;
 dirStruct.loading_Dir=['data' filesep 'EnglishData' filesep];
 dirStruct.OutFig_Dir= '/media/parida/DATAPART1/Matlab/DropboxOutput/hilbert_envelopes/English/';
 allfiles=dir([dirStruct.loading_Dir '*.mat']);

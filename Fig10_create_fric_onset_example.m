@@ -1,10 +1,13 @@
-% function Fig10_create_fric_onset_example(saveFig)
-function Fig10_create_fric_onset_example(saveFig)
+% function Fig10_create_fric_onset_example(saveFig, LatexDir)
+function Fig10_create_fric_onset_example(saveFig, LatexDir)
 
 if ~exist('saveFig', 'var')
     saveFig= 0;
 end
-dirStruct.latexDir= ['figures' filesep];
+if ~exist('LatexDir', 'var')
+    LatexDir= ['figures' filesep];
+end
+dirStruct.latexDir= LatexDir;
 dirStruct.loading_Dir= ['data' filesep 'DanishData' filesep];
 
 chinID=355;

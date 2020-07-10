@@ -1,10 +1,12 @@
-% function Fig1_intro_nonstat_demo(saveFig)
-function Fig1_intro_nonstat_demo(saveFig)
+% function Fig1_intro_nonstat_demo(saveFig, LatexDir)
+function Fig1_intro_nonstat_demo(saveFig, LatexDir)
 
 if ~exist('saveFig', 'var')
     saveFig= 0;
 end
-LatexDir= ['figures' filesep];
+if ~exist('LatexDir', 'var')
+    LatexDir= ['figures' filesep];
+end
 
 figHan= 1;
 
@@ -31,7 +33,7 @@ eng_data.voiced_boundaries(:,1)= eng_data.voiced_boundaries(:,1)+10e-3;
 eng_data.voiced_boundaries(:,2)= eng_data.voiced_boundaries(:,2)-10e-3;
 eng_data.voiced_inds= any(t_eng(anl.speech.tMask)>eng_data.voiced_boundaries(:,1) & t_eng(anl.speech.tMask)<eng_data.voiced_boundaries(:,2), 1);
 
-temp_formants= load(['data' filesep 'danish_formant.mat']);
+temp_formants= load(['data' filesep 'english_formant.mat']);
 temp_formants= temp_formants.formant_data;
 eng_data.trajectory.f1= interp1([temp_formants.time], [temp_formants.f1], t_eng(anl.speech.tMask), 'pchip')/1e3;
 eng_data.trajectory.f1(~eng_data.voiced_inds)= nan;
@@ -112,12 +114,12 @@ box off;
 ylabel('I (dB SPL)');
 
 axes(ax(1));
+hold on;
 timePlot= helper.plot_spectrogram(sig_eng(anl.speech.tMask), fs_eng, anl.speech.tWindow, plt.spect.fracOVlap, plt.spect.nfft, plt.spect.useDefaultPlot, plt.spect.tStart);
 plt.ColBar= max(get(colorbar, 'Limits'));
 caxis([plt.ColBar-40 plt.ColBar]);
 colorbar off;
 ylabHan(2)= ylabel('Frequency (kHz)', 'Units', 'normalized');
-hold on;
 tFormant= 1e3*(anl.speech.tWindow/2+t_eng(anl.speech.tMask));
 tFormant(tFormant<min(timePlot))= nan;
 

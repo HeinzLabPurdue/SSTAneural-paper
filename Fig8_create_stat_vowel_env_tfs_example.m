@@ -1,10 +1,13 @@
-% function Fig8_create_stat_vowel_env_tfs_example(saveFig)
-function Fig8_create_stat_vowel_env_tfs_example(saveFig)
+% function Fig8_create_stat_vowel_env_tfs_example(saveFig, LatexDir)
+function Fig8_create_stat_vowel_env_tfs_example(saveFig, LatexDir)
 
 if ~exist('saveFig', 'var')
     saveFig= 0;
 end 
-DirStruct.latexDir= ['figures' filesep];
+if ~exist('LatexDir', 'var')
+    LatexDir= ['figures' filesep];
+end
+DirStruct.latexDir= LatexDir;
 DirStruct.INdata= ['data' filesep];
 
 anl.AcousticDelay= 8e-3; % Approximate stimulus-response delay. 4.59 ms for inv-FIR filtering. ~3 ms for default circuit.

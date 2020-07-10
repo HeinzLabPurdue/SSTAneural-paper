@@ -1,10 +1,12 @@
-% function FigS2_create_kinVowel_spectrum(saveFig)
-function FigS2_create_kinVowel_spectrum(saveFig)
+% function FigS2_create_kinVowel_spectrum(saveFig, LatexDir)
+function FigS2_create_kinVowel_spectrum(saveFig, LatexDir)
 
 if ~exist('saveFig', 'var')
     saveFig= 0;
 end
-latexDir= ['figures' filesep];
+if ~exist('LatexDir', 'var')
+    LatexDir= ['figures' filesep];
+end
 
 plt.xtick_psd_val= [10 100 1e3 5e3];
 plt.xtick_psd_lab= cellfun(@(x) num2str(x), num2cell(plt.xtick_psd_val/1e3), 'uniformoutput', false);
@@ -49,5 +51,5 @@ set(findall(gcf,'-property','TickLength'),'TickLength', plt.tick_len, 'units', '
 set(gca, 'Units', 'normalized', 'Position', [.08 .14 .9 .8]);
 
 if saveFig
-   saveas(gcf, [latexDir 'FigS2'], 'epsc'); 
+   saveas(gcf, [LatexDir 'FigS2'], 'epsc'); 
 end

@@ -1,10 +1,12 @@
-% function Fig6_7_RD_FM_example(saveFig)
-function Fig6_7_RD_FM_example(saveFig)
+% function Fig6_7_RD_FM_example(saveFig, LatexDir)
+function Fig6_7_RD_FM_example(saveFig, LatexDir)
 
 if ~exist('saveFig', 'var')
     saveFig= 0;
 end
-latexDir= ['figures' filesep];
+if ~exist('LatexDir', 'var')
+    LatexDir= ['figures' filesep];
+end
 
 modFreq= 20; %[10 25 50 100];
 
@@ -480,7 +482,7 @@ drawnow
 
 
 if saveFig && (useSpikes)
-    saveas(gcf, [latexDir 'Fig6'], 'epsc');
+    saveas(gcf, [LatexDir 'Fig6'], 'epsc');
 end
 
 %% TFS
@@ -604,5 +606,5 @@ drawnow
 
 
 if saveFig && (useSpikes)
-    saveas(gcf, [latexDir 'Fig7'], 'epsc');
+    saveas(gcf, [LatexDir 'Fig7'], 'epsc');
 end

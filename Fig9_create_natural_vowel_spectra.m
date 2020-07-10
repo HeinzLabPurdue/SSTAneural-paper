@@ -1,13 +1,16 @@
-% function Fig9_create_natural_vowel_spectra(saveFig)
-function Fig9_create_natural_vowel_spectra(saveFig)
+% function Fig9_create_natural_vowel_spectra(saveFig, LatexDir)
+function Fig9_create_natural_vowel_spectra(saveFig, LatexDir)
 
 if ~exist('saveFig', 'var')
     saveFig= 0;
 end
+if ~exist('LatexDir', 'var')
+    LatexDir= ['figures' filesep];
+end
 
 dirStruct.loading_dir= ['data' filesep 'DanishData' filesep];
 dirStruct.Root_savingDir='/media/parida/DATAPART1/Matlab/DropboxOutput/LF_speech_analysis/Output/Danish/';
-dirStruct.latexDir= ['figures' filesep];
+dirStruct.latexDir= LatexDir;
 
 % chinID=361;
 

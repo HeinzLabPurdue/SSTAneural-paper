@@ -1,10 +1,12 @@
-% function Fig3_compare_AN_FFR(saveFig)
-function Fig3_compare_AN_FFR(saveFig)
+% function Fig3_compare_AN_FFR(saveFig, LatexDir)
+function Fig3_compare_AN_FFR(saveFig, LatexDir)
 
 if ~exist('saveFig', 'var')
     saveFig= 0;
 end
-LatexDir= ['figures' filesep];
+if ~exist('LatexDir', 'var')
+    LatexDir= ['figures' filesep];
+end
 
 figSize_cm= [15 5 13.2 8];
 figure_prop_name = {'PaperPositionMode','units','Position', 'Renderer'};
