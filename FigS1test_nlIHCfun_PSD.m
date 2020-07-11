@@ -39,8 +39,8 @@ ylHan(1)= ylabel('Amplitude', 'Units', 'normalized');
 
 ax(2)= subplot(223);
 hold on;
-[~,~, lHan(1)]= plot_dpss_psd(x_sam, fs);
-[~,~, lHan(2)]= plot_dpss_psd(abs(x_sam), fs);
+[~,~, lHan(1)]= helper.plot_dpss_psd(x_sam, fs);
+[~,~, lHan(2)]= helper.plot_dpss_psd(abs(x_sam), fs);
 
 set(lHan(1), 'color', helper.get_color('g'));
 set(lHan(2), 'color', helper.get_color('prp'));
@@ -88,7 +88,7 @@ xlHan_F.Position(1)= 1.1;
 plt.tick_len= [.02 .02];
 set(findall(gcf,'-property','TickLength'),'TickLength', plt.tick_len, 'units', 'normalized');
 set(ttlHan, 'FontSize', 11);
-add_subplot_letter_txp(2, 2, 11, .03, 1.0);
+helper.add_subplot_letter_txp(2, 2, 11, .03, 1.0);
 
 ylHan(1).Position(1)= -.14;
 ylHan(2).Position(1)= -.14;

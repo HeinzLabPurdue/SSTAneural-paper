@@ -39,31 +39,18 @@ if length(anl.kin_trajectory.f0)~=sum(anl.tPlot<188e-3)
 end
 
 % Load saved data
-DirStruct.INdata= '/media/parida/DATAPART1/Matlab/DropboxOutput/SynchronyCapture/ParsedData/';
-DirStruct.OUTdata= '/media/parida/DATAPART1/Matlab/DropboxOutput/SynchronyCapture/F0Harmonics/Synthetic/';
+DirStruct.INdata= ['data' filesep];
 ChinID= 374;
 SynCapData= load(sprintf('%sQ%d_allSyncCap.mat', DirStruct.INdata, ChinID));
 SynCapData=SynCapData.SynCapData;
-if ~isfolder(DirStruct.OUTdata)
-    mkdir(DirStruct.OUTdata);
-end
-
-allUnit_vowelPSDcell= cell(length(SynCapData), 1);
 
 kin_Image= cell(length(SynCapData), 1);
-stat_Image= cell(length(SynCapData), 1);
 %% Main loop to iterate through all units
 
 d_lp = designfilt('lowpassiir','FilterOrder', 3, ...
     'HalfPowerFrequency', (1.5/anl.tRange)/(anl.fs/2), 'DesignMethod','butter');
 
 parfor unitVar= 1:length(SynCapData)
-    % for unitVar= 10
-    figure(figHan.time);
-    clf;
-    figure(figHan.psd);
-    clf;
-    
     
     %% define what features to look at for stationary and kinematic vowels
     cur_unit_data= SynCapData(unitVar);

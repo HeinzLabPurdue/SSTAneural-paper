@@ -24,7 +24,7 @@ clf;
 set(gcf,figure_prop_name,figure_prop_val);
 
 [sig, fs]= audioread(['stimuli' filesep 's2_vowelA_kin.wav']);
-sig= gen_rescale(sig, 70);
+sig= helper.gen_rescale(sig, 70);
 
 
 [~,~,lHan]= helper.plot_dft(sig, fs, 'yscale', 'dbspl', 'yrange', 70);

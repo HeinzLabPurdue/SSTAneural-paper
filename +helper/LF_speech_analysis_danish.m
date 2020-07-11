@@ -3,9 +3,7 @@ function PSDout= LF_speech_analysis_danish(curChinID, curTrack, curUnit, dB_SPL,
 loading_Dir= dirStruct.loading_dir;
 savingDir= dirStruct.Root_savingDir;
 latexDir= dirStruct.latexDir;
-if ~isfolder(savingDir)
-    mkdir(savingDir);
-end
+
 curChinDatafName=dir(sprintf('%s*%d*',loading_Dir,curChinID));
 
 fs= 20e3;

@@ -16,7 +16,7 @@ anl.speech.tStart= 0.25; %1.55;
 anl.speech.tEnd= 2.35; %2.35;
 anl.speech.fs= 12e3;
 
-CodesDir= '/home/parida/Dropbox/Articles/neural_temporal_coding/files_to_share/';
+CodesDir= pwd; 
 
 [sig_eng, fs_eng]= audioread(['stimuli' filesep 'Stim_S_P.wav']);
 sig_eng= helper.gen_resample(sig_eng, fs_eng, anl.speech.fs);

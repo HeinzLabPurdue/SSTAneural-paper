@@ -48,7 +48,7 @@ for unitVar= 1:length(SynCapData)
     
     cur_delay= 4.59e-3; %This is the additional delay of using RP2-inv-calib
 
-    chinDanishData(unitVar).CF_Hz= cur_unit_data.CF_Hz; %#ok<*SAGROW>
+    chinDanishData(unitVar).CF_Hz= cur_unit_data.CF_Hz;  %#ok<*AGROW>
     chinDanishData(unitVar).SR= cur_unit_data.SR;
     chinDanishData(unitVar).pos= cell2mat(cur_unit_data.danish.pos)-cur_delay;
     chinDanishData(unitVar).neg= cell2mat(cur_unit_data.danish.neg)-cur_delay;
@@ -69,7 +69,7 @@ else
 end
 for fileVar=1:length(allfiles)
     temp = load([dirStruct.loading_dir allfiles(fileVar).name]);
-    allChinSpikeData = [allChinSpikeData; temp.spike_data']; %#ok<AGROW>
+    allChinSpikeData = [allChinSpikeData; temp.spike_data']; 
 end
 
 [~, uniqInds]= unique([ [allChinSpikeData.chinID]', [allChinSpikeData.track]', [allChinSpikeData.unit]', [allChinSpikeData.SPL]'], 'rows');

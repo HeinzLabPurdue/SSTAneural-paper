@@ -1,6 +1,8 @@
 clear;
 clc;
 
+tic;
+
 all_mFiles= dir('Fig*.m');
 allFiles= {all_mFiles.name}';
 
@@ -12,5 +14,7 @@ end
 
 for fileVar= 1:length(allFiles)
     fprintf('Running %s... \n', allFiles{fileVar})
-    eval([allFiles{fileVar}(1:end-2) '(saveFig, LatexDir)']);
+    eval([allFiles{fileVar}(1:end-2) '(saveFig, FigDir)']);
 end
+
+toc;
