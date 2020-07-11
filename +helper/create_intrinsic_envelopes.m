@@ -43,7 +43,7 @@ lHan(2)= plot(tEng, -1*Astim + Astim*sigEng/max(abs(sigEng)), 'Color', helper.ge
 
 box off;
 axis tight;
-ylabel('Rate (spikes/bin)');
+ylabel('Discharge rate (spikes/bin)');
 
 
 xlabHan= xlabel('Time (s)');

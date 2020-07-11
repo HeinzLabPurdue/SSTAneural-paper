@@ -87,11 +87,11 @@ set(ax(1),'Position',[Xcorner_X, Ycorner_X+Ywidth_B+Yshift_X, Xwidth_X, Ywidth_A
 drawnow
 
 % D
-set(ax(4),'Position',[Xcorner_X+Xwidth_X+1.4*Xshift_X, Ycorner_X, Xwidth_X, Ywidth_X])
+set(ax(4),'Position',[Xcorner_X+Xwidth_X+1.5*Xshift_X, Ycorner_X, Xwidth_X, Ywidth_X])
 drawnow
 
 % C
-set(ax(3),'Position',[Xcorner_X+Xwidth_X+1.4*Xshift_X, Ycorner_X+Ywidth_X+Yshift_X, Xwidth_X, Ywidth_X])
+set(ax(3),'Position',[Xcorner_X+Xwidth_X+1.5*Xshift_X, Ycorner_X+Ywidth_X+Yshift_X, Xwidth_X, Ywidth_X])
 drawnow
 
 % F
@@ -111,7 +111,7 @@ txt(2)= text(.05, 1.05, 'B', 'Units', 'normalized');
 yyaxis right;
 plot(tSPL(validInds)*1e3, pSPL(validInds), 'LineWidth', plt.lw3);
 box off;
-ylabel('I (dB SPL)');
+ylabel('Intensity (dB SPL)');
 
 axes(ax(1));
 hold on;
@@ -203,8 +203,7 @@ plot(perHist_time*1e3, min(PerHist_pos) -50 + 75*perHist_sig, 'color', helper.ge
 txt(5)= text(.05, 1.05, 'D', 'Units', 'normalized');
 % legend('Per. Hist.', 'Stimulus', 'box', 'off', 'Location', 'northeast');
 xlab_han= xlabel('Time (ms)');
-% xlab_han.Position(1)= 100; 
-ylabHan= ylabel('Rate (spikes/bin)');
+ylabHan= ylabel('Discharge rate (spikes/bin)');
 ylabHan.Position(1)= -0.27;
 ylabHan.Position(2)= 1000;
 

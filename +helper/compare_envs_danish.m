@@ -40,12 +40,25 @@ if ~isempty(inds2use_stim)
     
     inds2use_uRate= tCenters>tStart & tCenters<tEnd;
     
-    uRate_pos=histcounts(cell2mat(clean_speech_spikes_pos), binEdges);
-    uRate_neg=histcounts(cell2mat(clean_speech_spikes_neg), binEdges);
+    uRate_pos= histcounts(cell2mat(clean_speech_spikes_pos), binEdges);
+    uRate_neg= histcounts(cell2mat(clean_speech_spikes_neg), binEdges);
+    
+    
     uRate_sum= .5*(uRate_pos+uRate_neg);
     uRate_tfs= .5*(uRate_pos-uRate_neg);
+    uRate_tfs(isnan(uRate_tfs))= 0;
     uRate_hil= abs(hilbert(uRate_tfs));
     
+    % 
+    tMax= 860e-3;
+    uRate_pos(tCenters>tMax)= nan;
+    uRate_neg(tCenters>tMax)= nan;
+    uRate_sum(tCenters>tMax)= nan;
+    uRate_tfs(tCenters>tMax)= nan;
+    uRate_hil(tCenters>tMax)= nan;
+    stim(tStim>tMax)= nan;
+
+
     Amax= 1.05*max(abs([uRate_pos(inds2use_uRate), uRate_neg(inds2use_uRate)]));
     yMinMax=[-1.6*Amax 1.6*Amax];
     
@@ -120,7 +133,7 @@ if ~isempty(inds2use_stim)
     
     txtHan(4)= text(.02, .95, 'D. e(t)', 'units', 'normalized');
     axis tight;
-    ylHan= ylabel('Rate (spikes/bin)');
+    ylHan= ylabel('Discharge rate (spikes/bin)');
     
     linkaxes(ax, 'x');
     linkaxes(ax(2:4), 'y');
