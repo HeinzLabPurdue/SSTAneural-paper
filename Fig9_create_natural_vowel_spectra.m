@@ -33,9 +33,6 @@ tStart = .48; tEnd = .58;
 
 
 timeSubDir=sprintf('%stStart%.0fms_tEnd%.0fms%s', dirStruct.Root_savingDir, tStart*1e3, tEnd*1e3, filesep);
-% if ~isfolder(timeSubDir)
-%     mkdir(timeSubDir);
-% end
 
 for unitVar= 144 % Example = 144th unit [Q355, track#5, unit#8]
     curChinID= chin_track_unit_spl(unitVar, 1);

@@ -1,8 +1,6 @@
 clear;
 clc;
 
-tic;
-
 all_mFiles= dir('Fig*.m');
 allFiles= {all_mFiles.name}';
 
@@ -17,4 +15,3 @@ for fileVar= 1:length(allFiles)
     eval([allFiles{fileVar}(1:end-2) '(saveFig, FigDir)']);
 end
 
-toc;

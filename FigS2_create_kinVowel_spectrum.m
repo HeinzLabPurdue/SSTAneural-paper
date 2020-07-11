@@ -30,7 +30,7 @@ sig= helper.gen_rescale(sig, 70);
 [~,~,lHan]= helper.plot_dft(sig, fs, 'yscale', 'dbspl', 'yrange', 70);
 xlim([80 5e3]);
 box off;
-set(lHan, 'color', get_color('b'), 'linew', plt.lw);
+set(lHan, 'color', helper.get_color('b'), 'linew', plt.lw);
 xlabel('Frequency (kHz)');
 ylabel('DFT-Magnitude (dB)');
 
