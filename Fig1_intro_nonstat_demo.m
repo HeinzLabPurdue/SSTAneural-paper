@@ -115,13 +115,13 @@ ylabel('Intensity (dB SPL)');
 
 axes(ax(1));
 hold on;
-timePlot= helper.plot_spectrogram(sig_eng(anl.speech.tMask), fs_eng, anl.speech.tWindow, plt.spect.fracOVlap, plt.spect.nfft, plt.spect.useDefaultPlot, plt.spect.tStart);
+% timePlot= helper.plot_spectrogram(sig_eng(anl.speech.tMask), fs_eng, anl.speech.tWindow, plt.spect.fracOVlap, plt.spect.nfft, plt.spect.useDefaultPlot, plt.spect.tStart);
 plt.ColBar= max(get(colorbar, 'Limits'));
 caxis([plt.ColBar-40 plt.ColBar]);
 colorbar off;
 ylabHan(2)= ylabel('Frequency (kHz)', 'Units', 'normalized');
 tFormant= 1e3*(anl.speech.tWindow/2+t_eng(anl.speech.tMask));
-tFormant(tFormant<min(timePlot))= nan;
+% tFormant(tFormant<min(timePlot))= nan;
 
 lformant_Han(1)= line(tFormant, eng_data.trajectory.f1, plt.ColBar*ones(size(eng_data.trajectory.f1)),'linew', plt.lw3);
 lformant_Han(2)= line(tFormant, eng_data.trajectory.f2, plt.ColBar*ones(size(eng_data.trajectory.f1)), 'linew', plt.lw3);
@@ -156,6 +156,11 @@ binEdges_perHist= 0:1/fs:stim_dur;
 fc= temp_data.Stimuli.main.tone.freq;
 temp_spike_data= temp_data.spikes{1};
 temp_spike_data= temp_spike_data(:,2);
+
+xx= load(['data' filesep 'SP-2016_08_08-Q245_AN' filesep 'p0006_calib.mat']);
+db_spl_used= interp1(xx.data.CalibData(:,1), xx.data.CalibData(:,2), fc/1e3) - unique(temp_data.Line.attens.Tone(:,2));
+fprintf('Intensity for tone = %.1f dB SPL \n', db_spl_used);
+
 
 t_uRate= (binEdges_perHist(1:end-1)+binEdges_perHist(2:end))/2;
 uRate_pos= histcounts(temp_spike_data, binEdges_perHist);
