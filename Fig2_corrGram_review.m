@@ -108,7 +108,7 @@ ax(1)= subplot(nSProws, nSPcols, 1);
 ACFhan(1)= plot(delay_sig, acf_sig);
 ttlHan(1)= title('Stimulus');
 % xlabel('Delay (\mus)');
-ylHan(1)= ylabel('Number of intervals', 'Units', 'normalized');
+ylHan(1)= ylabel('Number of coincidences', 'Units', 'normalized');
 
 ax(2)= subplot(nSProws, nSPcols, 2);
 ACFhan(2)= plot(delay_fo*1e3, foISIhist);
@@ -169,8 +169,8 @@ ylabel('');
 xlabel('');
 
 set(bx, 'xtick', plt.xtick_CF_val, 'xticklabel', plt.xtick_CF_lab);
-set(ACFhan, 'linew', 1, 'color', helper.get_color('b')); 
-set(DFThan, 'linew', 1.5, 'color', helper.get_color('b')); 
+set(ACFhan, 'linew', 1, 'color', helper.get_color('b'));
+set(DFThan, 'linew', 1.5, 'color', helper.get_color('b'));
 
 linkaxes(bx, 'x');
 xlim(bx(1), [fm_Hz/2 3*CF_Hz]);

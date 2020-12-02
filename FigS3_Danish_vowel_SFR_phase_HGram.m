@@ -163,7 +163,7 @@ set(findall(gcf,'-property','FontSize'),'FontSize', 9);
 set(txtHan,'FontSize', 11);
 
 if hilbPhi1_comp0
-    fName= 'SigS3';
+    fName= 'FigS3';
 else
     fName= 'Fig14';
 end

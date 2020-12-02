@@ -41,15 +41,15 @@ use_DFT0_DPSS1= 0;
 [outPower_fun, totPower_fun]= helper.get_freq_trajectory_power(sig_org, stim.fs, stim.freqTrajectory, false, freq_window_Hz, 100, [], use_DFT0_DPSS1);
 
 validFreqInds= Freq_yy>-freq_window_Hz & Freq_yy<freq_window_Hz;
-outPower_psd= sum(db2mag(A_yy(validFreqInds)).^2*numel(y)/numel(A_yy));
+outPower_psd= 2 * sum(db2mag(A_yy(validFreqInds)).^2 * numel(y) / numel(A_yy)); % times 2 because both positive and negative frequencies
 totPower_psd= sum(db2mag(A_yy).^2*numel(y)/numel(A_yy));
 
-fprintf('-----> FUN: traj=%.1f, TOT=%.1f \n', outPower_fun, totPower_fun);
-fprintf('-----> PSD: traj=%.1f, TOT=%.1f \n', outPower_psd, totPower_psd);
+fprintf('-----> FUN: traj=%.2f, TOT=%.1f \n', outPower_fun, totPower_fun);
+fprintf('-----> PSD: traj=%.2f, TOT=%.1f \n', outPower_psd, totPower_psd);
 
 %%
 anl.tWindow= 100e-3;
-anl.fracOVlap= .99;
+anl.fracOVlap= 0;
 anl.nfft= 2^(3+nextpow2(anl.tWindow*stim.fs));
 
 lw= .8;
@@ -68,7 +68,7 @@ set(gcf,figure_prop_name,figure_prop_val);
 
 
 ax(1)= subplot(221);
-spectrogram(sig_org+1j*eps, blackman(anl.tWindow *stim.fs), round(anl.tWindow*anl.tWindow*anl.fracOVlap), anl.nfft, 'centered', 'yaxis', stim.fs);
+spectrogram(sig_org+1j*eps, blackman(anl.tWindow *stim.fs), round(anl.tWindow*anl.fracOVlap*stim.fs), anl.nfft, 'centered', 'yaxis', stim.fs);
 hold on;
 lformant_Han(1)= line(stim.t, stim.freqTrajectory/1e3+.2, 'LineWidth', lw);
 lformant_Han(2)= line(stim.t, stim.freqTrajectory/1e3-.2, 'LineWidth', lw);
@@ -89,7 +89,7 @@ box off;
 set(gca, 'YTick', ytick_vals, 'YTickLabel', ytick_labs);
 
 ax(3)= subplot(223);
-spectrogram(y, blackman(anl.tWindow *stim.fs), round(anl.tWindow*anl.tWindow*anl.fracOVlap), anl.nfft, 'centered', 'yaxis', stim.fs);
+spectrogram(y, blackman(anl.tWindow *stim.fs), round(anl.tWindow*anl.fracOVlap*stim.fs), anl.nfft, 'centered', 'yaxis', stim.fs);
 hold on;
 lformant_Han(1)= line(stim.t, 0*stim.t+.15, 'LineWidth', lw);
 lformant_Han(2)= line(stim.t, 0*stim.t-.15, 'LineWidth', lw);
