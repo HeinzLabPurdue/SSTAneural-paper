@@ -175,7 +175,7 @@ if ~isempty(inds2use_stim)
         if contains(latex_fName, 'Q355_t2_u4_tStart740ms_tEnd850ms_65dBSPL')
 %             fprintf('Saved as %s.eps\n', latex_fName);
             %             saveas(gcf, latex_fName, 'epsc');
-            saveas(gcf, [latexDir 'Fig10'], 'epsc');
+            saveas(gcf, [latexDir 'Fig8'], 'epsc');
         end
     end
 else

@@ -1,5 +1,5 @@
-% function FigS2_create_kinVowel_spectrum(saveFig, LatexDir)
-function FigS2_create_kinVowel_spectrum(saveFig, LatexDir)
+% function FigS4_create_kinVowel_spectrum(saveFig, LatexDir)
+function FigS4_create_kinVowel_spectrum(saveFig, LatexDir)
 
 if ~exist('saveFig', 'var')
     saveFig= 0;
@@ -37,19 +37,19 @@ ylabel('DFT-Magnitude (dB)');
 set(gca, 'XTick', plt.xtick_psd_val, 'XTickLabel', plt.xtick_psd_lab);
 set(findall(gcf,'-property','FontSize'),'FontSize', plt.fSize);
 
-annotation('arrow',[.175, .205], [.85, .85], 'HeadWidth', plt.arrow.HeadWidth, 'HeadLength', plt.arrow.HeadLength);
-annotation('arrow',[.525, .495], [.85, .85], 'HeadWidth', plt.arrow.HeadWidth, 'HeadLength', plt.arrow.HeadLength);
-annotation('arrow',[.625, .675], [.7, .7], 'HeadWidth', plt.arrow.HeadWidth, 'HeadLength', plt.arrow.HeadLength);
-text(.06, .98, 'F_0', 'Units', 'normalized');
+annotation('arrow',[.135, .17], [.9, .9], 'HeadWidth', plt.arrow.HeadWidth, 'HeadLength', plt.arrow.HeadLength);
+annotation('arrow',[.54, .495], [.9, .9], 'HeadWidth', plt.arrow.HeadWidth, 'HeadLength', plt.arrow.HeadLength);
+annotation('arrow',[.66, .72], [.73, .73], 'HeadWidth', plt.arrow.HeadWidth, 'HeadLength', plt.arrow.HeadLength);
+text(.065, .98, 'F_0', 'Units', 'normalized');
 text(.48, .98, 'F_1', 'Units', 'normalized');
-text(.65, .8, 'F_2', 'Units', 'normalized');
-text(.8, .52, 'F_3', 'Units', 'normalized');
+text(.66, .8, 'F_2', 'Units', 'normalized');
+text(.81, .52, 'F_3', 'Units', 'normalized');
 
 plt.tick_len= [.02 .02];
 set(findall(gcf,'-property','TickLength'),'TickLength', plt.tick_len, 'units', 'normalized');
 
-set(gca, 'Units', 'normalized', 'Position', [.08 .14 .9 .8]);
+set(gca, 'Units', 'normalized', 'Position', [.08 .14 .9 .84]);
 
 if saveFig
-   saveas(gcf, [LatexDir 'FigS2'], 'epsc'); 
+   saveas(gcf, [LatexDir 'FigS4'], 'epsc'); 
 end

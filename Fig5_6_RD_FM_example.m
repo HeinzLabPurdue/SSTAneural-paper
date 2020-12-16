@@ -1,5 +1,5 @@
-% function Fig6_7_RD_FM_example(saveFig, LatexDir)
-function Fig6_7_RD_FM_example(saveFig, LatexDir)
+% function Fig5_6_RD_FM_example(saveFig, LatexDir)
+function Fig5_6_RD_FM_example(saveFig, LatexDir)
 
 if ~exist('saveFig', 'var')
     saveFig= 0;
@@ -482,7 +482,7 @@ drawnow
 
 
 if saveFig && (useSpikes)
-    saveas(gcf, [LatexDir 'Fig6'], 'epsc');
+    saveas(gcf, [LatexDir 'Fig5'], 'epsc');
 end
 
 %% TFS
@@ -606,5 +606,5 @@ drawnow
 
 
 if saveFig && (useSpikes)
-    saveas(gcf, [LatexDir 'Fig7'], 'epsc');
+    saveas(gcf, [LatexDir 'Fig6'], 'epsc');
 end

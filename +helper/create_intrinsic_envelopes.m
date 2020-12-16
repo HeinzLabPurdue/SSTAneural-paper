@@ -75,7 +75,7 @@ arh.LineWidth= 5;
 arh.Color= helper.get_color('b');
 arh.HeadWidth= 25;
 
-txt= text(-0.49, 0.47, {'Modulation';'Filterbank'}, 'units', 'normalized');
+txt= text(-0.49, 0.47, {'Modulation';'filter bank'}, 'units', 'normalized');
 txt.FontWeight= 'bold';
 txt.FontSize= 9;
 set(findall(gcf,'-property','FontSize'),'FontSize', 9);
@@ -98,5 +98,5 @@ set(sp_ax(2),'Position',[Xcorner+Xwidth+Xshift Ycorner Xwidth Ywidth])
 drawnow
 
 if saveFig && contains(fName, 'HilbEnv_clean_speech_Q277_t2_u1_61dBSPL')
-    saveas(gcf, [dirStruct.latexDir 'Fig5'], 'epsc');
+    saveas(gcf, [dirStruct.latexDir 'Fig4'], 'epsc');
 end

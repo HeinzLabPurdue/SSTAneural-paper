@@ -1,5 +1,5 @@
-% function Fig9_create_natural_vowel_spectra(saveFig, LatexDir)
-function Fig9_create_natural_vowel_spectra(saveFig, LatexDir)
+% function Fig7_create_natural_vowel_spectra(saveFig, LatexDir)
+function Fig7_create_natural_vowel_spectra(saveFig, LatexDir)
 
 if ~exist('saveFig', 'var')
     saveFig= 0;

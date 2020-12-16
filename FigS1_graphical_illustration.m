@@ -1,5 +1,5 @@
-% function Fig10_create_fric_onset_example(saveFig, LatexDir)
-function FigS4_graphical_illustration(saveFig, LatexDir)
+% function FigS1_graphical_illustration(saveFig, LatexDir)
+function FigS1_graphical_illustration(saveFig, LatexDir)
 
 if ~exist('saveFig', 'var')
     saveFig= 0;
@@ -38,7 +38,7 @@ set(gcf,figure_prop_name,figure_prop_val);
 sp_ax(1)= subplot(321);
 hold on;
 plot(t_ms, p_t, 'linew', lw);
-plot(t_ms, n_t, 'linew', lw);
+plot(t_ms, n_t, '-.', 'linew', lw);
 title('Time waveform');
 
 [lgHan, icons]= legend('p(t)', 'n(t)', 'box', 'off', 'FontSize', fSize);
@@ -91,7 +91,7 @@ lgHan.Position(1:2)= [.87 .54];
 sp_ax(3)= subplot(325);
 hold on;
 plot(t_ms, e_t, 'linew', lw);
-plot(t_ms, phi_t, 'linew', lw);
+plot(t_ms, phi_t, '-.', 'linew', lw);
 xlabel('Time (ms)');
 
 [lgHan, icons]= legend('e(t)', '\phi(t)', 'box', 'off', 'FontSize', fSize);
@@ -123,6 +123,8 @@ linkaxes(sp_bx);
 xlim(sp_bx(1), [10 fs/2]);
 ylim(sp_bx(1), [-60 -10]);
 
+add_subplot_letter(3, 2, 14);
+
 %% define new axes for AB
 Xcorner_X= .075;
 Xwidth_X= .39;
@@ -151,5 +153,5 @@ set(sp_bx(1),'Position',[Xcorner_X+Xwidth_X+Xshift_X, Ycorner_X+2*Ywidth_X+2*Ysh
 drawnow
 
 if saveFig 
-    saveas(gcf, [LatexDir 'FigS4'], 'epsc');
+    saveas(gcf, [LatexDir 'FigS1'], 'epsc');
 end

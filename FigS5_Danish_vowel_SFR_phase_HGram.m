@@ -1,5 +1,5 @@
-% function Fig14_Danish_vowel_SFR_HGram(saveFig, LatexDir)
-function Fig14_Danish_vowel_SFR_HGram(saveFig, LatexDir)
+% function FigS5_Danish_vowel_SFR_phase_HGram(saveFig, LatexDir)
+function FigS5_Danish_vowel_SFR_phase_HGram(saveFig, LatexDir)
 
 if ~exist('saveFig', 'var')
     saveFig= 0;
@@ -10,7 +10,7 @@ end
 
 file2load= ['data' filesep 'SP-2019_06_09-Q374_SFR_NH' filesep 'a0008_FFR_SNRenvSSN_Stim_S_P_atn10.mat'];
 
-hilbPhi1_comp0= 0;
+hilbPhi1_comp0= 1;
 
 %%
 data= load(file2load);
@@ -40,11 +40,6 @@ if hilbPhi1_comp0
 else
     x_TFS= x_tfs;
 end
-t_ffr= (1:length(x_tfs))/anl.fs;
-
-
-x_env= (x_pos+x_neg)/2;
-x_env= helper.gen_resample(x_env, fs_data, anl.fs);
 
 %%
 [sig, fs_sig]= audioread(['stimuli' filesep 'FLN_Stim_S_P.wav']);
@@ -166,11 +161,7 @@ drawnow
 set(findall(gcf,'-property','FontSize'),'FontSize', 9);
 set(txtHan,'FontSize', 11);
 
-if hilbPhi1_comp0
-    fName= 'SigS3';
-else
-    fName= 'Fig14';
-end
+fName= 'FigS5';
 if saveFig
     print([LatexDir fName], '-dpng',  '-r600');
 end

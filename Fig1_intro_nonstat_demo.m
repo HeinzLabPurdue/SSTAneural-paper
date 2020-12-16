@@ -316,5 +316,5 @@ set(txt, 'FontSize', 11);
 
 if saveFig
     print([LatexDir 'Fig1'], '-dpng',  '-r600');
-    print([LatexDir 'Fig1'], '-dtiff',  '-r600');
+%     print([LatexDir 'Fig1'], '-dtiff',  '-r600');
 end

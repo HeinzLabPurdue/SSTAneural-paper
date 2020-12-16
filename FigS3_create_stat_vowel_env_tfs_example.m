@@ -1,5 +1,5 @@
-% function Fig8_create_stat_vowel_env_tfs_example(saveFig, LatexDir)
-function Fig8_create_stat_vowel_env_tfs_example(saveFig, LatexDir)
+% function FigS3_create_stat_vowel_env_tfs_example(saveFig, LatexDir)
+function FigS3_create_stat_vowel_env_tfs_example(saveFig, LatexDir)
 
 if ~exist('saveFig', 'var')
     saveFig= 0;
@@ -39,6 +39,6 @@ sig_raw= helper.gen_resample(sig_raw, fsOrg, fsSig);
 helper.plot_snap_fft_stat_vowel(uRatePos, uRateNeg, anl.fs, sig_raw, fsSig, anl.tStart, anl.tEnd, cur_unit_data.TC, 1);
 
 if saveFig
-    fName_psd= [DirStruct.latexDir 'Fig8'];
+    fName_psd= [DirStruct.latexDir 'FigS3'];
     saveas(gcf, fName_psd, 'epsc');
 end

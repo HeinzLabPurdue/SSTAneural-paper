@@ -1,5 +1,5 @@
-% function Fig13_Danish_vowel_AN_HGram(saveFig, LatexDir)
-function Fig13_Danish_vowel_AN_HGram(saveFig, LatexDir)
+% function Fig11_Danish_vowel_AN_HGram(saveFig, LatexDir)
+function Fig11_Danish_vowel_AN_HGram(saveFig, LatexDir)
 
 if ~exist('saveFig', 'var')
     saveFig= 0;
@@ -351,7 +351,7 @@ set(sp_ax(2),'Position',[Xcorner_X+Xwidth_X+Xshift_X, Ycorner_X+2*Ywidth_X+2*Ysh
 drawnow
 
 if saveFig
-    fName_latex= [DirStruct.latex 'Fig13'];
+    fName_latex= [DirStruct.latex 'Fig11'];
 %     fName_latex_tiff= [DirStruct.latex 'tiff/Fig13'];
     print(fName_latex, '-dpng',  '-r600');
 %     print(fName_latex_tiff, '-dtiff',  '-r600');

@@ -54,7 +54,7 @@ if ~isempty(inds2use)
         set(findall(gcf,'-property','TickLength'),'TickLength', plt.tick_len, 'units', 'normalized');
         if saveFigs
             fprintf('Saved as %s.eps\n', latex_fName);
-            saveas(gcf, [latexDir 'Fig9'], 'epsc');
+            saveas(gcf, [latexDir 'Fig7'], 'epsc');
         end
     end
 else

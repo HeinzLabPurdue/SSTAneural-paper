@@ -1,5 +1,5 @@
-% function Fig11_demodulation_demo(saveFig, LatexDir)
-function Fig11_demodulation_demo(saveFig, LatexDir)
+% function Fig9_demodulation_demo(saveFig, LatexDir)
+function Fig9_demodulation_demo(saveFig, LatexDir)
 
 if ~exist('saveFig', 'var')
     saveFig= 0;
@@ -149,5 +149,5 @@ set(ax(2),'Position',[Xcorner_CD Ycorner_CD+Ywidth_CD+Yshift_CD Xwidth_CD Ywidth
 drawnow
 
 if saveFig
-    saveas(gcf, [LatexDir 'Fig11'], 'epsc');
+    saveas(gcf, [LatexDir 'Fig9'], 'epsc');
 end

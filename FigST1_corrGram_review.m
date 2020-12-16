@@ -1,5 +1,5 @@
-% function Fig2_corrGram_review(saveFig, LatexDir)
-function Fig2_corrGram_review(saveFig, LatexDir)
+% function FigST1_corrGram_review(saveFig, LatexDir)
+function FigST1_corrGram_review(saveFig, LatexDir)
 
 if ~exist('saveFig', 'var')
     saveFig= 0;
@@ -226,5 +226,5 @@ drawnow
 %%
 
 if saveFig
-    saveas(gcf, [LatexDir 'Fig2'], 'epsc');
+    saveas(gcf, [LatexDir 'FigST1'], 'epsc');
 end

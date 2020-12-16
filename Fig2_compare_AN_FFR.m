@@ -1,5 +1,5 @@
-% function Fig3_compare_AN_FFR(saveFig, LatexDir)
-function Fig3_compare_AN_FFR(saveFig, LatexDir)
+% function Fig2_compare_AN_FFR(saveFig, LatexDir)
+function Fig2_compare_AN_FFR(saveFig, LatexDir)
 
 if ~exist('saveFig', 'var')
     saveFig= 0;
@@ -331,7 +331,7 @@ set(findall(gcf,'-property','TickLength'),'TickLength', plt.tick_len, 'units', '
 
 
 % fName= 'FFR_AN_compare';
-fName= 'Fig3';
+fName= 'Fig2';
 if saveFig
     saveas(gcf, [LatexDir fName], 'epsc');
 end

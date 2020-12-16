@@ -10,7 +10,8 @@ if ~isfolder(FigDir)
     mkdir(FigDir);
 end
 
-for fileVar= 1:length(allFiles)
+% for fileVar= 1:length(allFiles)
+for fileVar= [1:3 5:length(allFiles)]
     fprintf('Running %s... \n', allFiles{fileVar})
     eval([allFiles{fileVar}(1:end-2) '(saveFig, FigDir)']);
 end

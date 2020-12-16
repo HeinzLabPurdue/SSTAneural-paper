@@ -1,5 +1,5 @@
-% function Fig5_create_internal_envelope_example(saveFig, LatexDir)
-function Fig5_create_internal_envelope_example(saveFig, LatexDir)
+% function Fig4_create_internal_envelope_example(saveFig, LatexDir)
+function Fig4_create_internal_envelope_example(saveFig, LatexDir)
 
 if ~exist('saveFig', 'var')
     saveFig= 0;

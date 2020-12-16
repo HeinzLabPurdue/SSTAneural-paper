@@ -1,5 +1,5 @@
-% function Fig4_compare_efficiency_difcor_c_t(saveFig, LatexDir)
-function Fig4_compare_efficiency_difcor_c_t(saveFig, LatexDir)
+% function Fig3_compare_efficiency_difcor_c_t(saveFig, LatexDir)
+function Fig3_compare_efficiency_difcor_c_t(saveFig, LatexDir)
 
 if ~exist('saveFig', 'var')
     saveFig= 0;
@@ -245,6 +245,6 @@ drawnow
 
 % fName= sprintf('%sSingleFreqImprovement', dirStruct.latexDir);
 if saveFig
-    fName= sprintf('%sFig4', dirStruct.latexDir);
+    fName= sprintf('%sFig3', dirStruct.latexDir);
     saveas(gcf, fName, 'epsc');
 end

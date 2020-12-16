@@ -1,5 +1,5 @@
-% function FigS1test_nlIHCfun_PSD(saveFig, LatexDir)
-function FigS1test_nlIHCfun_PSD(saveFig, LatexDir)
+% function FigS2_test_nlIHCfun_PSD(saveFig, LatexDir)
+function FigS2_test_nlIHCfun_PSD(saveFig, LatexDir)
 
 if ~exist('saveFig', 'var')
     saveFig= 0;
@@ -121,5 +121,5 @@ set(ax(3),'Position',[Xcorner_CD Ycorner_CD+Ywidth_CD+Yshift_CD Xwidth_CD Ywidth
 drawnow
 
 if saveFig
-    saveas(gcf, [LatexDir 'FigS1'], 'epsc');
+    saveas(gcf, [LatexDir 'FigS2'], 'epsc');
 end

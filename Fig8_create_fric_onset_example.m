@@ -1,5 +1,5 @@
-% function Fig10_create_fric_onset_example(saveFig, LatexDir)
-function Fig10_create_fric_onset_example(saveFig, LatexDir)
+% function Fig8_create_fric_onset_example(saveFig, LatexDir)
+function Fig8_create_fric_onset_example(saveFig, LatexDir)
 
 if ~exist('saveFig', 'var')
     saveFig= 0;
