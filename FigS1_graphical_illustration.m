@@ -10,15 +10,17 @@ end
 
 fc= 100;
 fm= 20;
-fs= 1e3;
-[x, t]= create_SAM(fc, fm, fs, 1, 1);
+fs= 3e3;
+modDepth= 1;
+dur= 1;
+[x, t]= create_SAM(fc, fm, fs, modDepth, dur);
 t_ms= t*1e3;
 
 p_t= x .* (x>0);
 n_t= -x .* (-x>0);
 s_t= (p_t+n_t)/2;
 d_t= (p_t-n_t)/2;
-a_t= rms(d_t)*hilbert(d_t);
+a_t= hilbert(d_t);
 e_t= abs(a_t)/sqrt(2);
 phi_t= rms(d_t) * cos(angle(a_t));
 
@@ -120,8 +122,8 @@ set(findall(gcf,'-property','FontSize'),'FontSize', fSize);
 
 
 linkaxes(sp_bx);
-xlim(sp_bx(1), [10 fs/2]);
-ylim(sp_bx(1), [-60 -10]);
+xlim(sp_bx(1), [10 501]);
+ylim(sp_bx(1), [-47 -10]);
 
 add_subplot_letter(3, 2, 14);
 
